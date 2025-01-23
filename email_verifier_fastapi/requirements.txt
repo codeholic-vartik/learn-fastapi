@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+dnspython
+smtplib
+cachetools
+uvicorn
+cachetools
+requests
