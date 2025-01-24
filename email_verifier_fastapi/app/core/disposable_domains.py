@@ -1,5 +1,7 @@
 import requests
-from typing import List, Optional
+import yaml
+from typing import List
+from app.core.config import DISPOSABLE_DOMAINS
 
 class DisposableDomains:
     """
@@ -11,10 +13,11 @@ class DisposableDomains:
         """
         Initialize the DisposableDomains utility.
         Fetches both strict and normal lists of disposable domains.
+        Loads additional disposable domains from a YAML file.
         """
         self.strict_url = "https://raw.githubusercontent.com/disposable/disposable-email-domains/master/domains_strict.txt"
         self.normal_url = "https://raw.githubusercontent.com/disposable/disposable-email-domains/master/domains.txt"
-        self.domains: List[str] = self._fetch_and_combine_domains()
+        self.domains: List[str] = self._fetch_and_combine_domains() + self._load_disposable_domains_from_yaml()
 
     def _fetch_and_combine_domains(self) -> List[str]:
         """
@@ -40,6 +43,19 @@ class DisposableDomains:
             return combined_domains
         except requests.RequestException as e:
             print(f"Failed to fetch disposable domains: {e}")
+            return []
+
+    def _load_disposable_domains_from_yaml(self) -> List[str]:
+        """
+        Load disposable domains from the YAML configuration file.
+        :return: List of disposable domains from the YAML file.
+        """
+        try:
+            with open("config.yaml", "r") as file:
+                config = yaml.safe_load(file)
+                return config.get("disposable_domains", [])
+        except Exception as e:
+            print(f"Failed to load disposable domains from YAML: {e}")
             return []
 
     def is_disposable_email(self, email: str) -> bool:

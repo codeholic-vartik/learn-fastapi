@@ -1,0 +1,49 @@
+# Configuration for Advanced Catch-All Detector
+
+# Thread Pool Configuration
+max_workers: 10
+rate_limit_delay: 1
+
+# Bypass Patterns
+bypass_patterns:
+  - postmaster
+  - abuse
+  - spam
+smtp:
+  host: smtp.example.com
+  port: 587
+  timeout: 10
+
+
+#Disposable Domain List
+
+disposable_domains:
+  - tempmail.com
+  - 10minutemail.com
+  - throwawaymail.com
+  - mailinator.com
+  - guerrillamail.com
+  - yopmail.com
+  - temp-mail.org
+  - trashmail.com
+  - sharklasers.com
+  - thetechnext.net
+  - tempmail.net
+  - disposablemail.com
+  - wegwerfemail.de
+  - throwawaymail.net
+  - minutemail.com
+  - tempmailaddress.com
+  - fakeinbox.com
+  - mailnesia.com
+  - tempr.email
+  - guerrillamail.net
+  - guerrillamail.org
+  - guerrillamailblock.com
+  - mailinator.net
+  - mailinator.org
+  - mailinator.info
+  - yopmail.fr
+  - yopmail.net
+  - cool.fr.nf
+  - jetable.org

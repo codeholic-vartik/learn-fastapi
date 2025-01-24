@@ -1,11 +1,29 @@
 import os
-from typing import Set, Dict, Any, Union
+from typing import Set, Dict, Any, Union,List
 import requests
 
 
 class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql:// postgres:tE8ri2hEd1ruxus8_Br2@139.84.132.236:5432/dataforge'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+
+
+# Disposable Email Domains
+DISPOSABLE_DOMAINS: List[str] = [
+    'tempmail.com', '10minutemail.com', 'throwawaymail.com',
+    'mailinator.com', 'guerrillamail.com', 'yopmail.com',
+    'temp-mail.org', 'trashmail.com', 'sharklasers.com', 'thetechnext.net',
+    'tempmail.net', 'disposablemail.com', 'wegwerfemail.de',
+    'throwawaymail.net', 'minutemail.com', 'tempmailaddress.com',
+    'fakeinbox.com', 'mailnesia.com', 'tempr.email',
+    'guerrillamail.net', 'guerrillamail.org', 'guerrillamailblock.com',
+    'mailinator.net', 'mailinator.org', 'mailinator.info',
+    'yopmail.fr', 'yopmail.net', 'cool.fr.nf', 'jetable.org'
+]
+
+
 
 
 # Function to fetch and parse the disposable domains list from the URL
@@ -22,11 +40,6 @@ def fetch_disposable_domains(urls: list) -> Set[str]:
             print(f"Error fetching disposable email domains from {url}: {e}")
     return all_domains
 
-# URLs of the raw domain lists
-DISPOSABLE_EMAIL_DOMAINS_URLS = [
-    "https://raw.githubusercontent.com/disposable/disposable-email-domains/master/domains.txt",
-    "https://raw.githubusercontent.com/disposable/disposable-email-domains/master/domains_strict.txt"
-]
 
 # Hardcoded disposable email domains
 STATIC_DISPOSABLE_DOMAINS: Set[str] = {
@@ -42,7 +55,7 @@ STATIC_DISPOSABLE_DOMAINS: Set[str] = {
 }
 
 # Fetch disposable email domains and merge with the static list
-DISPOSABLE_DOMAINS: Set[str] = STATIC_DISPOSABLE_DOMAINS.union(fetch_disposable_domains(DISPOSABLE_EMAIL_DOMAINS_URLS))
+DISPOSABLE_DOMAINS: Set[str] = STATIC_DISPOSABLE_DOMAINS
 
 # Flask Configuration
 FLASK_CONFIG = {
@@ -217,23 +230,6 @@ ROLE_ACCOUNTS: Set[str] = {
     'old', 'new', 'archive', 'archived', 'inactive', 'active'
 }
 
-# Disposable Email Domains
-DISPOSABLE_DOMAINS: Set[str] = {
-    # Major Disposable Services
-    'tempmail.com', '10minutemail.com', 'throwawaymail.com',
-    'mailinator.com', 'guerrillamail.com', 'yopmail.com',
-    'temp-mail.org', 'trashmail.com', 'sharklasers.com',
-
-    # Additional Services
-    'tempmail.net', 'disposablemail.com', 'wegwerfemail.de',
-    'throwawaymail.net', 'minutemail.com', 'tempmailaddress.com',
-    'fakeinbox.com', 'mailnesia.com', 'tempr.email',
-
-    # Variants
-    'guerrillamail.net', 'guerrillamail.org', 'guerrillamailblock.com',
-    'mailinator.net', 'mailinator.org', 'mailinator.info',
-    'yopmail.fr', 'yopmail.net', 'cool.fr.nf', 'jetable.org'
-}
 
 FREE_EMAIL_PROVIDERS: Set[str] = {
     # Global Providers

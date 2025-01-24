@@ -1,0 +1,27 @@
+# Python-specific
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Virtual environment directories
+venv/
+env/
+.env/
+
+# IDE and editor folders
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Python distribution / packaging
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Log files
+*.log

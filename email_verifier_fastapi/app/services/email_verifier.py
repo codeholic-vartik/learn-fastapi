@@ -19,7 +19,6 @@ from app.core.config import (
     DNS_CONFIG,
     SMTP_CONFIG,
     ROLE_ACCOUNTS,
-    DISPOSABLE_DOMAINS,
     FREE_EMAIL_PROVIDERS,
     BLACKLISTS,
     VALIDATION_RULES,
@@ -111,7 +110,6 @@ class EmailVerifier:
 
         # Load configurations
         self.role_accounts = ROLE_ACCOUNTS
-        # self.disposable_domains = DISPOSABLE_DOMAINS
         self.free_providers = FREE_EMAIL_PROVIDERS
         self.blacklists = BLACKLISTS
         self.disposable_checker = DisposableDomains()

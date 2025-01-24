@@ -6,3 +6,4 @@ cachetools
 uvicorn
 cachetools
 requests
+pyyaml
