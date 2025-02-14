@@ -29,7 +29,7 @@ def verify_email(email):
         return False  # Could not verify
 
 # Test the function
-email = "codeholic.ritin@gmail.com"
+email = ""
 print(verify_email(email))  # True if email exists, False if not
 
 ```
