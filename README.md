@@ -1,3 +1,40 @@
+```py
+import smtplib
+import dns.resolver
+
+def get_mx_record(domain):
+    try:
+        answers = dns.resolver.resolve(domain, 'MX')
+        return str(answers[0].exchange)
+    except Exception as e:
+        return None
+
+def verify_email(email):
+    domain = email.split('@')[-1]
+    mx_record = get_mx_record(domain)
+
+    if not mx_record:
+        return False  # No mail server found
+
+    try:
+        server = smtplib.SMTP(mx_record, 25, timeout=5)
+        server.helo()
+        server.mail(email)  # Use a relay email here
+        code, message = server.rcpt(email)
+        print(code)
+        server.quit()
+
+        return code == 250  # 250 means email exists
+    except:
+        return False  # Could not verify
+
+# Test the function
+email = "codeholic.ritin@gmail.com"
+print(verify_email(email))  # True if email exists, False if not
+
+```
+
+
 # Step-by-Step Guide: Setting Up an SMTP Server on Vultr and Verifying Emails Without Sending
 
 ## 1. Setting Up an SMTP Server on Vultr
