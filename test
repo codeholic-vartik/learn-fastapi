@@ -1,0 +1,28 @@
+To build your own email verification product while avoiding IP blacklisting, you'll need:
+
+Multiple IPs on VPS
+
+Assign multiple IPs to your VPS.
+Rotate these IPs automatically for SMTP verification.
+IP Rotation & Proxy Setup
+
+Use SOCKS5 proxies or multiple IPs on your VPS.
+Use IP tables (Linux) or HAProxy to route requests.
+SMTP Email Verification System
+
+Extract MX records.
+Perform SMTP handshake (without sending an actual email).
+Use retries and rate limiting to avoid blacklisting.
+Scalability & Performance
+
+Implement multi-threading or async processing.
+Use Redis queues for handling bulk email verification.
+Blacklist Prevention
+
+Rotate between multiple IPs and proxies.
+Monitor email verification response codes.
+Implement timeouts and delays to mimic human behavior.
+Do you want a step-by-step implementation guide for setting up multiple IPs and automating rotation on your VPS?
+
+
+
